@@ -1,40 +1,32 @@
-import '../../core/ui/styles/colors_app.dart';
+import 'package:dw_vakinha/app/core/ui/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/config/env.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.black),
-        ),
-        primaryColor: ColorsApp.i.primary,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: ColorsApp.i.primary,
-          primary: ColorsApp.i.primary,
-          secondary: ColorsApp.i.secondary,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Splash'),
       ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Splash'),
-        ),
-        body: Column(
-          children: [
-            Container(),
-            ElevatedButton(
-              onPressed: (){},
-              child: Text('teste'),
+      body: Column(
+        children: [
+          Container(),
+          DeliveryButton(
+            label: Env.i['backend_base_url'] ?? '',
+            onPressed: () {},
+            height: 200,
+            width: 200,
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              label: Text('teste'),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

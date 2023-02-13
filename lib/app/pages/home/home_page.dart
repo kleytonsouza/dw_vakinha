@@ -1,3 +1,4 @@
+import 'package:dw_vakinha/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -8,10 +9,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("home Page"),
+      appBar: DeliveryAppbar(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Text("index: $index");
+              },
+            ),
+          )
+        ],
       ),
-      body: Container(child: Text('Homepage'),),
     );
   }
 }

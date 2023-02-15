@@ -20,11 +20,6 @@ class _HomePageState extends State<HomePage> with Loader, Messages {
     return Scaffold(
       appBar: DeliveryAppbar(),
       floatingActionButton: FloatingActionButton(onPressed: () async {
-        // showLoader();
-        // await Future.delayed(
-        //   const Duration(seconds: 2),
-        // );
-        // hideLoader();
         showError("Deu mierda erro");
         await Future.delayed(Duration(seconds: 2));
         showInfo("Deu boa informações");

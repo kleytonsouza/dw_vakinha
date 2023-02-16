@@ -19,4 +19,15 @@ class HomeState extends Equatable {
 
   @override
   List<Object?> get props => [status, products];
+
+  // o operador ?? retorna o primeiro valor a esquerda se caso ele nao for nulo
+  // senao, se ele for nulo, retorna o valor a direita
+  //exemplo products ?? this.products, significa se products for nulo, retorna this.products
+  HomeState copyWith({
+    HomeStateStatus? status,
+    List<ProductModel>? products,
+  }) {
+    return HomeState(
+        products: products ?? this.products, status: status ?? this.status);
+  }
 }

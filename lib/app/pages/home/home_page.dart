@@ -7,6 +7,8 @@ import 'package:dw_vakinha/app/pages/home/widget/delivery_product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/ui/base_state/base_state.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -14,13 +16,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with Loader, Messages {
+class _HomePageState extends BaseState<HomePage, HomeController> {
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<HomeController>().loadProducts();
-    });
+  void onReady() {
+    controller.loadProducts();
   }
 
   @override

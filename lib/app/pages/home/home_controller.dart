@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart' show Cubit;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dw_vakinha/app/pages/home/home_state.dart';
 import 'package:dw_vakinha/app/repositories/products/products_repository.dart';
 

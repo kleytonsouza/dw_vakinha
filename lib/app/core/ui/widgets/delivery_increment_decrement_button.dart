@@ -1,18 +1,46 @@
+import 'package:dw_vakinha/app/core/ui/styles/colors_app.dart';
+import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class DeliveryIncrementDecrementButton extends StatelessWidget {
   const DeliveryIncrementDecrementButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("data"),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(7),
       ),
-      body: Container(
-        child: Text("fjejeje"),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10,
+            ),
+            child: Text(
+              "-",
+              style: context.textStyles.textMedium
+                  .copyWith(fontSize: 22, color: Colors.grey),
+            ),
+          ),
+          Text(
+            "1",
+            style: context.textStyles.textRegular
+                .copyWith(fontSize: 17, color: context.colors.secondary),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10,
+            ),
+            child: Text(
+              "+",
+              style: context.textStyles.textMedium
+                  .copyWith(fontSize: 22, color: context.colors.secondary),
+            ),
+          ),
+        ],
       ),
     );
   }

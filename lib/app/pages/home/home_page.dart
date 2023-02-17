@@ -1,5 +1,3 @@
-import 'package:dw_vakinha/app/core/ui/helpers/loader.dart';
-import 'package:dw_vakinha/app/core/ui/helpers/messages.dart';
 import 'package:dw_vakinha/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dw_vakinha/app/pages/home/home_controller.dart';
 import 'package:dw_vakinha/app/pages/home/home_state.dart';
@@ -17,10 +15,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends BaseState<HomePage, HomeController> {
+  
   @override
   void onReady() {
     controller.loadProducts();
   }
+  
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //     context.read<HomeController>().loadProducts();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +56,8 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                 child: ListView.builder(
                   itemCount: state.products.length,
                   itemBuilder: (context, index) {
-                    final products = state.products[index];
-                    return DeliveryProductTile(product: products);
+                    final product = state.products[index];
+                    return DeliveryProductTile(product: product);
                   },
                 ),
               )

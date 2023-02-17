@@ -1,10 +1,10 @@
 import 'package:dw_vakinha/app/core/provider/application_binding.dart';
 import 'package:dw_vakinha/app/core/ui/theme/theme_config.dart';
-import 'package:dw_vakinha/app/pages/home/home_page.dart';
 import 'package:dw_vakinha/app/pages/home/home_router.dart';
 import 'package:dw_vakinha/app/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'pages/product_detail/product_detail_router.dart';
 
 class DwApp extends StatelessWidget {
   const DwApp({super.key});
@@ -18,6 +18,7 @@ class DwApp extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/home': (context) => HomeRouter.page,
+          '/productDetail': (context) => ProductDetailRouter.page,
         },
       ),
     );

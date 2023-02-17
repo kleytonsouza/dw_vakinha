@@ -9,10 +9,10 @@ abstract class BaseState<T extends StatefulWidget, C extends BlocBase>
   late final C controller;
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     controller = context.read<C>();
-    WidgetsBinding.instance.addTimingsCallback((timings) {
+    WidgetsBinding.instance.addPostFrameCallback((timings) {
       onReady();
     });
   }

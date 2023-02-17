@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  auto_size_text:
+    dependency: "direct main"
+    description:
+      name: auto_size_text
+      sha256: "3f5261cd3fb5f2a9ab4e2fc3fba84fd9fcaac8821f20a1d4e71f557521b22599"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   bloc:
     dependency: transitive
     description:
@@ -247,7 +255,7 @@ packages:
     source: hosted
     version: "5.0.2"
   flutter_lints:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_lints
       sha256: aeb0b80a8b3709709c9cc496cdc027c5b3216796bc0af0ce1007eaf24464fd4c
@@ -364,7 +372,7 @@ packages:
     source: hosted
     version: "0.4.1"
   match_generator:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: match_generator
       sha256: d6e0129db2452e06a43c42d02b1edc0b2a79118e266a44c44451f7b3cfbfb26f

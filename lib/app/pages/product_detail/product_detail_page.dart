@@ -2,6 +2,7 @@ import 'package:dw_vakinha/app/core/ui/helpers/size_extensions.dart';
 import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:dw_vakinha/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ProductDetailPage extends StatelessWidget {
   const ProductDetailPage({super.key});
@@ -46,7 +47,44 @@ class ProductDetailPage extends StatelessWidget {
               ),
             ),
           ),
-          Text("data")
+          const Divider(),
+          Row(
+            children: [
+               SizedBox(
+                width: context.percentWidth(.5),
+                child: Text("Botao incremento"),
+              ),
+              Container(
+                width: context.percentWidth(.5),
+                height: 68,
+                padding: const EdgeInsets.all(8),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Adicionar",
+                        style: context.textStyles.textExtraBold
+                            .copyWith(fontSize: 13),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: AutoSizeText(
+                          r"R$ 6.99",
+                          maxFontSize: 13,
+                          minFontSize: 5,
+                          maxLines: 1,
+                          style: context.textStyles.textExtraBold
+                              .copyWith(fontSize: 13),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

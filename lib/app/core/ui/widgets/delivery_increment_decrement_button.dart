@@ -3,7 +3,14 @@ import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryIncrementDecrementButton extends StatelessWidget {
-  const DeliveryIncrementDecrementButton({super.key});
+  final int amount;
+  final VoidCallback incrementTap;
+  final VoidCallback decrementTap;
+  const DeliveryIncrementDecrementButton(
+      {super.key,
+      required this.amount,
+      required this.incrementTap,
+      required this.decrementTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +26,17 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
             ),
-            child: Text(
-              "-",
-              style: context.textStyles.textMedium
-                  .copyWith(fontSize: 22, color: Colors.grey),
+            child: InkWell(
+              onTap: decrementTap,
+              child: Text(
+                "-",
+                style: context.textStyles.textMedium
+                    .copyWith(fontSize: 22, color: Colors.grey),
+              ),
             ),
           ),
           Text(
-            "1",
+            amount.toString(),
             style: context.textStyles.textRegular
                 .copyWith(fontSize: 17, color: context.colors.secondary),
           ),
@@ -34,10 +44,13 @@ class DeliveryIncrementDecrementButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
             ),
-            child: Text(
-              "+",
-              style: context.textStyles.textMedium
-                  .copyWith(fontSize: 22, color: context.colors.secondary),
+            child: InkWell(
+              onTap: incrementTap,
+              child: Text(
+                "+",
+                style: context.textStyles.textMedium
+                    .copyWith(fontSize: 22, color: context.colors.secondary),
+              ),
             ),
           ),
         ],

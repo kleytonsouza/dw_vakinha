@@ -20,7 +20,6 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
   void onReady() {
     controller.loadProducts();
   }
-  
   // @override
   // void initState() {
   //   super.initState();
@@ -28,7 +27,6 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
   //     context.read<HomeController>().loadProducts();
   //   });
   // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +50,7 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
         builder: (context, state) {
           return Column(
             children: [
+              Text(state.shoppingBag.length.toString()),
               Expanded(
                 child: ListView.builder(
                   itemCount: state.products.length,

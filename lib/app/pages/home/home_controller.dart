@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dw_vakinha/app/dto/order_product_dto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dw_vakinha/app/pages/home/home_state.dart';
 import 'package:dw_vakinha/app/repositories/products/products_repository.dart';
@@ -22,5 +23,11 @@ class HomeController extends Cubit<HomeState> {
           status: HomeStateStatus.error,
           errorMessage: "Erro na busca de produtos"));
     }
+  }
+
+  void addOrUpdateBag(OrderProductDto orderProduct) {
+    final shoppingBag = [...state.shoppingBag];
+    shoppingBag.add(orderProduct);
+    emit(state.copyWith(shoppingBag: shoppingBag));
   }
 }

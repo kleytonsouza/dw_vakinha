@@ -11,5 +11,9 @@ class ProductDetailController extends Cubit<int> {
   }
 
   void increment() => emit(state + 1);
-  void decrement() => emit(state > 1 ? state - 1 : 1);
+  void decrement() {
+    if (state > (_hasOrder ? 0 : 1)) {
+      emit(state - 1);
+    }
+  }
 }

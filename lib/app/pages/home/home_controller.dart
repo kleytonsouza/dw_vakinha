@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:dw_vakinha/app/dto/order_product_dto.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dw_vakinha/app/pages/home/home_state.dart';
 import 'package:dw_vakinha/app/repositories/products/products_repository.dart';
@@ -30,10 +29,12 @@ class HomeController extends Cubit<HomeState> {
     final shoppingBag = [...state.shoppingBag];
     final orderIndex = shoppingBag
         .indexWhere((element) => element.product == orderProduct.product);
+
     if (orderIndex > -1) {
       shoppingBag[orderIndex] = orderProduct;
+    } else {
+      shoppingBag.add(orderProduct);
     }
-    shoppingBag.add(orderProduct);
     emit(state.copyWith(shoppingBag: shoppingBag));
   }
 }

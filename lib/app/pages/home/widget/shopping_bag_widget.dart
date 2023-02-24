@@ -3,15 +3,27 @@ import 'package:dw_vakinha/app/core/ui/helpers/size_extensions.dart';
 import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:dw_vakinha/app/dto/order_product_dto.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShoppingBagWidget extends StatelessWidget {
   final List<OrderProductDto> shoppingBag;
 
   const ShoppingBagWidget({super.key, required this.shoppingBag});
 
+  Future<void> _goOrder(BuildContext context) async {
+    final navigator = Navigator.of(context);
+    final sp = await SharedPreferences.getInstance();
+    if (!sp.containsKey("acessToken")) {
+      //vai pra login
+      final loginResult = await navigator.pushNamed("/auth/login");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var totalBag = shoppingBag.fold<double>(0.0, (value, element) => value += element.totalPrice).currencyPTBR;
+    var totalBag = shoppingBag
+        .fold<double>(0.0, (value, element) => value += element.totalPrice)
+        .currencyPTBR;
     return Container(
       width: context.screenWidth,
       height: 90,
@@ -30,7 +42,9 @@ class ShoppingBagWidget extends StatelessWidget {
         ),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          _goOrder(context);
+        },
         child: Stack(
           children: [
             const Align(

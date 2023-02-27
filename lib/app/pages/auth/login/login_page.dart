@@ -1,4 +1,3 @@
-import 'package:dw_vakinha/app/core/ui/styles/colors_app.dart';
 import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:dw_vakinha/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dw_vakinha/app/core/ui/widgets/delivery_button.dart';

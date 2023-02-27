@@ -64,7 +64,9 @@ class LoginPage extends StatelessWidget {
                         style: context.textStyles.textBold
                             .copyWith(color: Colors.blue),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("/auth/register");
+                      },
                     ),
                   ],
                 ),

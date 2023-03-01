@@ -48,6 +48,7 @@ dependencies:
   match_generator: ^0.4.1
   shared_preferences: ^2.0.18
   validatorless: ^1.2.3
+  flutter_awesome_select: ^6.5.0
 
 dev_dependencies:
   flutter_test:

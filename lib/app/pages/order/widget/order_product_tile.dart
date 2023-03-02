@@ -1,3 +1,4 @@
+import 'package:dw_vakinha/app/core/extensions/formatter_extension.dart';
 import 'package:dw_vakinha/app/core/ui/styles/colors_app.dart';
 import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:dw_vakinha/app/core/ui/widgets/delivery_increment_decrement_button.dart';
@@ -21,7 +22,7 @@ class OrderProductTile extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            'https://burgerx.com.br/assets/img/galeria/burgers/x-burger.jpg',
+            orderProduct.product.image,
             width: 100,
             height: 100,
             fit: BoxFit.cover,
@@ -33,21 +34,21 @@ class OrderProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "X-Burguer",
+                    orderProduct.product.name,
                     style: context.textStyles.textRegular.copyWith(fontSize: 16),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        r"R$19.90",
+                        (orderProduct.product.price * orderProduct.amount).currencyPTBR,
                         style: context.textStyles.textMedium.copyWith(
                           fontSize: 14,
                           color: context.colors.secondary,
                         ),
                       ),
                       DeliveryIncrementDecrementButton.compact(
-                        amount: 0,
+                        amount: orderProduct.amount,
                         incrementTap: () {},
                         decrementTap: () {},
                       ),

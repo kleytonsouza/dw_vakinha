@@ -1,4 +1,5 @@
 import 'package:dw_vakinha/app/dto/order_product_dto.dart';
+import 'package:dw_vakinha/app/models/payment_type_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:match/match.dart';
 
@@ -8,28 +9,41 @@ part 'order_state.g.dart';
 enum OrderStatus {
   initial,
   loaded,
+  loading,
+  error,
 }
 
 class OrderState extends Equatable {
   final OrderStatus status;
   final List<OrderProductDto> orderProducts;
+  final List<PaymentTypeModel> paymentsTypes;
+  final String? errorMessage;
 
-  const OrderState({required this.status, required this.orderProducts});
+  const OrderState(
+      {required this.status,
+      required this.orderProducts,
+      this.errorMessage,
+      required this.paymentsTypes});
 
   const OrderState.initial()
       : status = OrderStatus.initial,
+        paymentsTypes = const [],
+        errorMessage = null,
         orderProducts = const [];
 
   @override
-  List<Object?> get props => [status, orderProducts];
+  List<Object?> get props => [status, orderProducts, paymentsTypes, errorMessage];
 
   OrderState copyWith({
     OrderStatus? status,
+    String? errorMessage,
+    List<PaymentTypeModel>? paymentsTypes,
     List<OrderProductDto>? orderProducts,
   }) {
     return OrderState(
         status: status ?? this.status,
+        paymentsTypes: paymentsTypes ?? this.paymentsTypes,
+        errorMessage: errorMessage ?? this.errorMessage,
         orderProducts: orderProducts ?? this.orderProducts);
   }
 }
-

@@ -3,7 +3,9 @@ import 'package:dw_vakinha/app/core/ui/styles/colors_app.dart';
 import 'package:dw_vakinha/app/core/ui/styles/text_styles.dart';
 import 'package:dw_vakinha/app/core/ui/widgets/delivery_increment_decrement_button.dart';
 import 'package:dw_vakinha/app/dto/order_product_dto.dart';
+import 'package:dw_vakinha/app/pages/order/widget/order_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderProductTile extends StatelessWidget {
   final int index;
@@ -35,13 +37,15 @@ class OrderProductTile extends StatelessWidget {
                 children: [
                   Text(
                     orderProduct.product.name,
-                    style: context.textStyles.textRegular.copyWith(fontSize: 16),
+                    style:
+                        context.textStyles.textRegular.copyWith(fontSize: 16),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        (orderProduct.product.price * orderProduct.amount).currencyPTBR,
+                        (orderProduct.product.price * orderProduct.amount)
+                            .currencyPTBR,
                         style: context.textStyles.textMedium.copyWith(
                           fontSize: 14,
                           color: context.colors.secondary,
@@ -49,15 +53,23 @@ class OrderProductTile extends StatelessWidget {
                       ),
                       DeliveryIncrementDecrementButton.compact(
                         amount: orderProduct.amount,
-                        incrementTap: () {},
-                        decrementTap: () {},
+                        incrementTap: () {
+                          context
+                              .read<OrderController>()
+                              .incrementProduct(index);
+                        },
+                        decrementTap: () {
+                          context
+                              .read<OrderController>()
+                              .decrementProduct(index);
+                        },
                       ),
                     ],
                   )
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -33,37 +33,38 @@ class _ProductDetailPageState
 
   void _showConfirmDelete(int amount) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text("Deseja Excluir o Produto?"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(
-                  "Cancelar",
-                  style: context.textStyles.textBold.copyWith(
-                    color: Colors.red,
-                  ),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Deseja Excluir o Produto?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Cancelar",
+                style: context.textStyles.textBold.copyWith(
+                  color: Colors.red,
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).pop(
-                    OrderProductDto(product: widget.product, amount: amount)
-                  );
-                },
-                child: Text(
-                  "Confirmar",
-                  style: context.textStyles.textBold,
-                ),
-              )
-            ],
-          );
-        });
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.of(context).pop(
+                  OrderProductDto(product: widget.product, amount: amount),
+                );
+              },
+              child: Text(
+                "Confirmar",
+                style: context.textStyles.textBold,
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -174,7 +175,7 @@ class _ProductDetailPageState
                 ),
               )
             ],
-          )
+          ),
         ],
       ),
     );

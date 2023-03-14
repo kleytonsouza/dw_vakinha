@@ -51,14 +51,13 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
               },
               child: Text(
                 "Cancelar",
-                style: context.textStyles.textBold.copyWith(
-                  color: Colors.red,
-                ),
+                style: context.textStyles.textBold.copyWith(color: Colors.red),
               ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
+                controller.decrementProduct(state.index);
               },
               child: Text(
                 "Confirmar",
@@ -76,18 +75,23 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
     return BlocListener<OrderController, OrderState>(
       listener: (context, state) {
         state.status.matchAny(
-            any: () => hideLoader(),
-            loading: () => showLoader(),
-            error: () {
-              hideLoader();
-              showError(state.errorMessage ?? "Erro não informado.");
-            },
-            confirmRemoveProduct: () {
-              hideLoader();
-              if (state is OrderConfirmDeleteProductState) {
-                _showConfirmProductDialog(state);
-              }
-            });
+          any: () => hideLoader(),
+          loading: () => showLoader(),
+          error: () {
+            hideLoader();
+            showError(state.errorMessage ?? "Erro não informado.");
+          },
+          confirmRemoveProduct: () {
+            hideLoader();
+            if (state is OrderConfirmDeleteProductState) {
+              _showConfirmProductDialog(state);
+            }
+          },
+          emptyBag: () {
+            showInfo("Sua sacola esta vazia, selecione");
+            Navigator.pop(context, <OrderProductDto>[]);
+          },
+        );
       },
       child: WillPopScope(
         onWillPop: () async {

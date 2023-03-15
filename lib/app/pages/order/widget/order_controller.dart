@@ -45,7 +45,7 @@ class OrderController extends Cubit<OrderState> {
     if (amount == 1) {
       if (state.status != OrderStatus.confirmRemoveProduct) {
         emit(OrderConfirmDeleteProductState(
-          orderProductDto: order,
+          orderProduct: order,
           index: index,
           status: OrderStatus.confirmRemoveProduct,
           orderProducts: state.orderProducts,
@@ -73,5 +73,9 @@ class OrderController extends Cubit<OrderState> {
 
   void cancelDeleteProcess() {
     emit(state.copyWith(status: OrderStatus.loaded));
+  }
+
+  emptyBag() {
+    emit(state.copyWith(status: OrderStatus.emptyBag));
   }
 }

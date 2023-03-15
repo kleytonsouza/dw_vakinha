@@ -42,7 +42,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
       builder: (context) {
         return AlertDialog(
           title: Text(
-              "Deseja Excluir o Produto ${state.orderProductDto.product.name}?"),
+              "Deseja Excluir o Produto ${state.orderProduct.product.name}?"),
           actions: [
             TextButton(
               onPressed: () {
@@ -88,7 +88,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
             }
           },
           emptyBag: () {
-            showInfo("Sua sacola esta vazia, selecione");
+            showInfo("Sua sacola esta vazia, selecione um produto.");
             Navigator.pop(context, <OrderProductDto>[]);
           },
         );
@@ -114,7 +114,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                       children: [
                         Text("Carrinho", style: context.textStyles.textTitle),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () => controller.emptyBag(),
                           icon: const Icon(Icons.delete, color: Colors.red),
                         ),
                       ],

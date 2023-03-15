@@ -24,7 +24,6 @@ class ShoppingBagWidget extends StatelessWidget {
         return;
       }
     }
-    //envia para a order
     final updateBag =
         await navigator.pushNamed("/order", arguments: shoppingBag);
     controller.updateBag(updateBag as List<OrderProductDto>);

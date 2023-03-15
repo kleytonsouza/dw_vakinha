@@ -56,7 +56,7 @@ class OrderState extends Equatable {
 }
 
 class OrderConfirmDeleteProductState extends OrderState {
-  final OrderProductDto orderProductDto;
+  final OrderProductDto orderProduct;
   final int index;
 
   const OrderConfirmDeleteProductState({
@@ -64,7 +64,7 @@ class OrderConfirmDeleteProductState extends OrderState {
     required super.orderProducts,
     required super.paymentsTypes,
     required this.index,
-    required this.orderProductDto,
+    required this.orderProduct,
     super.errorMessage,
   });
 }
